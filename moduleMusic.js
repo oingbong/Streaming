@@ -52,6 +52,8 @@ module.exports = {
 			url: 'http://www.melon.com/chart/day/index.htm?classCd=' + genre
 		};
 
+		var list = [];
+
 		request(options, callback);
 
 		function callback(error, response, body){
@@ -61,13 +63,23 @@ module.exports = {
 				var title = $(this).find('td:nth-child(6) > .wrap > .wrap_song_info > .rank01 > span > a').text();
 				var singer = $(this).find('td:nth-child(6) > .wrap > .wrap_song_info > .rank02 > span > a').text();
 				var album = $(this).find('td:nth-child(7) > .wrap > .wrap_song_info > .rank03 > a').text();
-				console.log('-------------------------------------');
-				console.log('photo : ' , photo);
-				console.log('title : ' , title);
-				console.log('singer : ' , singer);
-				console.log('album : ' , album);
-			});
+				
+				var obj = {
+					photo : photo,
+					title : title,
+					singer : singer,
+					album : album
+				};
 
+				list.push(obj);
+				// console.log('-------------------------------------');
+				// console.log('photo : ' , photo);
+				// console.log('title : ' , title);
+				// console.log('singer : ' , singer);
+				// console.log('album : ' , album);
+			});
 		}
+
+		return list;
 	}
 }

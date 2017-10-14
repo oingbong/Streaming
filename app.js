@@ -12,7 +12,11 @@ app.get('/', (req, res) => {
 app.get('/top100/:genre', (req, res) => {
 	var genre = req.params.genre;
 	//console.log('genre : ' , genre);
-	music.top100(genre);
+	var value = music.top100(genre);
+	setTimeout(function() { 
+		//console.log('value : ', value);
+		return res.json(value);
+	}, 1000);
 
 });
 
