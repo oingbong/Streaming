@@ -52,6 +52,7 @@ module.exports = {
 			url: 'http://www.melon.com/chart/day/index.htm?classCd=' + genre
 		};
 
+		var returnValue = new Object();
 		var list = [];
 
 		request(options, callback);
@@ -80,6 +81,9 @@ module.exports = {
 			});
 		}
 
-		return list;
+		returnValue.resultData = list;
+
+		//return list;
+		return returnValue;
 	}
 }
